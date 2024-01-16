@@ -19,4 +19,13 @@ class ProjectController extends Controller
         ]);
             
     }
+
+    public function show(Project $project) {
+
+        $project->load('type', 'technologies', 'type.projects');
+
+        return response()->json([
+            'project' => $project,
+        ]);
+    }
 }
